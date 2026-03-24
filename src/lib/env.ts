@@ -1,0 +1,15 @@
+function requireEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`${name} is not configured.`);
+  }
+  return value;
+}
+
+export const env = {
+  supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
+  supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
+  supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY ?? "",
+  anthropicApiKey: process.env.ANTHROPIC_API_KEY ?? "",
+  requireEnv
+};
